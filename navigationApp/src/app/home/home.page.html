@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Home </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="showModal()" expand="full">Open modal</ion-button>
+  <ion-button routerLink="/lists" expand="full">Open lists</ion-button>
+  <ion-button routerLink="/lists/3" expand="full">Open list with ID 3</ion-button>
+  <ion-button routerLink="/lists/3/items" expand="full">Open list 3 items</ion-button>
+  <ion-button routerLink="/lists/3/items/42" expand="full">Open item 42 in list 3</ion-button>
+
+  <ion-card>
+    <ion-card-content>
+      <app-textbox title="My cool input" (textChanged)="childChanged($event)"></app-textbox>
+      <ion-label color="tertiary">Value from child: {{ valueFromChild }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label>Add todo:</ion-label>
+    <ion-input [(ngModel)]="todo"></ion-input>
+  </ion-item>
+  <ion-button (click)="addTodo()" expand="full">Add</ion-button>
+
+  <ion-list>
+    <ion-label>Todo list:</ion-label>
+    <ion-item *ngFor="let todo of todos | async; let i = index;" (click)="removeTodo(i)">{{todo}}</ion-item>
+  </ion-list>
+</ion-content>

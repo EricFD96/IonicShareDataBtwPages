@@ -1,0 +1,7 @@
+{
+  "name": "navigationApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
